@@ -1,0 +1,1 @@
+web: gunicorn resort2.wsgi --log-file -
