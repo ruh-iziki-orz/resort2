@@ -1,0 +1,710 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>ResortsCentral Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: ResortsCentral - v4.7.0
+  * Template URL: https://bootstrapmade.com/real-Resorts-Central-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Resorts Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Search Resorts</h3>
+    </div>
+    <span class="close-box-collapse right-boxed bi bi-x"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a" action="\search\",method="POST">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="form-group">
+              <label class="pb-2" for="Type">Keyword</label>
+              <input type="text" name='keyword' class="form-control form-control-lg form-control-a" placeholder="Keyword">
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Type">Type</label>
+              <select class="form-control form-select form-control-a" name="type" id="Type">
+                <option value='-1'>All Type</option>
+                {% for type in types%}
+                <option value={{type.id}}>{{type.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="region">region</label>
+              <select class="form-control form-select form-control-a" id="region" name ="region">
+                <option value="-1">All regions</option>
+                {% for region in regions%}
+                <option value={{region.id}}>{{region.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="area">area</label>
+              <select class="form-control form-select form-control-a" id="area" name='area'>
+                <option value='-1'>All area</option>
+                {% for area in areas%}
+                <option vlaue={{area.id}}>{{area.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="price">Min Price</label>
+              <select class="form-control form-select form-control-a" id="price" name="min">
+                <option value='-1'>Unlimite</option>
+                {% for min in minimum %}
+                <option value={{min.amount}}>{{min.amount}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-b">Search Hotels</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- End Resorts Search Section -->>
+
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="/index">Resorts<span class="color-b">Central</span></a>
+
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link " href="/index">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="/resorts-grid">Hotels</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="/travel-grid">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        <i class="bi bi-search"></i>
+      </button>
+
+    </div>
+  </nav><!-- End Header/Navbar -->
+
+  <main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    {% if hotel %}
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">{{hotel.title}}</h1>
+              <span class="color-text-a">{{area.name}}</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box  justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="/index">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a href="/resorts-grid">Hotels</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  {{hotel.title}}
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <!-- ======= Resorts Single ======= -->
+    
+    <section class="property-single nav-arrow-b">
+      <div class="container">
+        {% if photos %}
+        <div class="row justify-content-center">
+          <div class="col-lg-10" style="">
+            <div id="property-single-carousel" class="swiper">
+              <div class="swiper-wrapper" >
+                {% for photo in photos %}
+                <div class="carousel-item-b swiper-slide"  >
+                  <img src=\{{photo.image}} style="Width:100%" alt={{photo.image}} >
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="property-single-carousel-pagination carousel-pagination"></div>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="row justify-content-between">
+              <div class="col-md-5 col-lg-4">
+                <div class="property-price  justify-content-center foo">
+                  <div class="card-header-c ">
+                    <div class="card-title-c align-self-center">
+                      {% if offer.from_price %}
+                      <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Just From</div>
+                        <div class="card-body text-success">
+                          <h5 class="card-title">RS  {{offer.from_price}}</h5>
+                          {% if offer.comment %}
+                          <p class="card-text">{{offer.comment}}</p>
+                          {% else %}
+                          <p class="card-text">Dont miss this valuble offer.</p>
+                          {% endif %}
+                        </div>
+                      </div>
+                      {% endif %}
+                      {% if situational_price %}
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" onclick="myFunction()" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Pricing 
+                        </button>
+                        
+                        <div class="dropdown-menu" id="myDropdown" aria-labelledby="dropdownMenuButton">
+                          {% for pricing in situational_price %}
+                          <a class="dropdown-item" href="#">{{pricing.situation}} {{pricing.price}} /{{pricing.per}}</a>
+                          {% endfor %}
+                        </div>
+                      </div>
+                        {% endif %}
+                      
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="Resorts-summary">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="title-box-d section-t4">
+                        <h3 class="title-d">Offer</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="summary-list" >
+                    <ul class="list">
+                      {% if offer.hotel_type %}
+                      <li class="   justify-content-between">
+                        <strong>Hotel Type :  </strong>
+                        <span>{{offer.hotel_type}}</span>
+                      </li>
+                      {% endif %}
+                      {% if offer.summary %}
+                      <li class=" justify-content-between">
+                        <strong>Summary :  </strong>
+                        <span>{{offer.summary}}</span>
+                      </li>
+                      {% endif %}
+                      {% if offer.feature %}
+                      <li class=" justify-content-between">
+                        <strong>Feature :  </strong>
+                        <span>{{offer.feature}}</span>
+                      </li>
+                      {% endif %}
+                      {% if offer.rooms %}
+                      <li class="justify-content-between">
+                        <strong>Rooms :  </strong>
+                        <span>{{offer.rooms}}</span>
+                      </li>
+                      {% endif %}
+                      {% if offer.airport %}
+                      <li class="justify-content-between">
+                        <strong>Nearest Airport :  </strong>
+                        <span>{{offer.airport}}</span>
+                      </li>
+                      {% endif %}
+                      {% if offer.validity %}
+                      <li class=" justify-content-between">
+                        <strong>Offer Validity :  </strong>
+                        <span>{{offer.validity}}</span>
+                      </li>
+                      {% endif %}
+                      {% for point in offer.points.all %}
+                      <li class=" justify-content-between">
+                        <strong>{{point.name}} :  </strong>
+                        <span>{{point.desc}}</span>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7 col-lg-7 section-md-t3">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">{{hotel.title}} Description</h3>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="Resorts-description">
+                  <p class="description color-text-a">
+                    {{hotel.overview}}
+                  </p>
+                </div>
+                {% if hotel.features.all %}
+                <div class="row section-t3">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">Amenities</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="amenities-list color-text-a">
+                  <ul class="list-a no-margin">
+                    {% for feature in hotel.features.all %}
+                    <li>{{feature}}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                {% endif %}
+                {% if hotel.location %}
+                <div class="row section-t3">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">Location</h3>
+                    </div>
+                  </div>
+                </div>
+                  {{hotel.location| safe}}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link  active" id="#accordion" href="#accomidation" data-bs-toggle="pill"  role="tab"  aria-selected="true">{{hotel.accomidation.name}}</a>
+              </li>
+              {% if hotel.dining %}
+              <li class="nav-item">
+                <a class="nav-link " id='#dining' href="#dining" data-bs-toggle="pill"  role="tab"  aria-selected="true">{{hotel.dining.name}}</a>
+              </li>
+              {% endif %}
+              {% if hotel.property %}
+              <li class="nav-item">
+                <a class="nav-link  " id="#property" href="#property" data-bs-toggle="pill"  role="tab"  aria-selected="true">{{hotel.property.name}}</a>
+              </li>
+              {% endif %}
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active " id="accomidation" role="tabpanel" aria-labelledby="accomidation-tab" style="background-color:white">
+                <p>{{hotel.accomidation.summary}}</p>
+                {% for sub in accomidation_sub %}
+                <div>
+                  <button class="accordion" style="auto-height:false;">{{sub.name}}</button>
+                  <div class="panel" style="auto-height:false;">
+                    
+                    {% if sub.image %}
+                      <img src=\{{sub.image}}  width="100%" height="460" frameborder="0" style="border:0" >
+                    {% endif %}
+                    {% if sub.rooms%}
+                    <li class=" justify-content-between">
+                      <strong >Rooms : </strong>
+                      <span>{{sub.rooms}}</span>
+                    </li>
+                    {% endif %}
+                    {% if sub.room_view%}
+                    <li class=" justify-content-between">
+                      <strong>Rooms View : </strong>
+                      <span>{{sub.room_view}}</span>
+                    </li>
+                    {% endif %}
+                    {% if sub.facilities%}
+                    <li class=" justify-content-between">
+                      <strong>Facilities : </strong>
+                      <span>{{sub.facilities}}</span>
+                    </li>
+                    {% endif %}
+                    
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              {% if hotel.dining %}
+              <div class="tab-pane fade  " id="dining" role="tabpanel" aria-labelledby="dining-tab" style="background-color:white">
+                <p>{{hotel.dining.summary}}</p>
+                {% for sub in dining_sub %}
+                <div>
+                  <button class="accordion">{{sub.name}}</button>
+                  <div class="panel">
+                    {% if sub.image %}
+                      <img src=\{{sub.image}}  width="100%" height="460" frameborder="0" style="border:0" allowfullscreen>
+                    {% endif %}
+                    {% if sub.cuisine%}
+                    <li class=" justify-content-between">
+                      <strong>cusine : </strong>
+                      <span>{{sub.cuisine}}</span>
+                    </li>
+                    {% endif %}
+                    {% if sub.setting%}
+                    <li class=" justify-content-between">
+                      <strong>Setting : </strong>
+                      <span>{{sub.setting}}</span>
+                    </li>
+                    {% endif %}
+                    {% if sub.dress_code%}
+                    <li class=" justify-content-between">
+                      <strong>Dress Code : </strong>
+                      <span>{{sub.dress_code}}</span>
+                    </li>
+                    {% endif %}
+                    {% if sub.children%}
+                    <li class=" justify-content-between">
+                      <strong>Children Menu : </strong>
+                      <span>{{sub.children}}</span>
+                    </li>
+                    {% endif %}
+                    {% if sub.vegetarian%}
+                    <li class=" justify-content-between">
+                      <strong>Vegrtarian : </strong>
+                      <span>{{sub.vegetarian}}</span>
+                    </li>
+                    {% endif %}
+                    {% if sub.reservation%}
+                    <li class=" justify-content-between">
+                      <strong>Reserved Required : </strong>
+                      <span>{{sub.reservation}}</span>
+                    </li>
+                    {% endif %}
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              {% endif %}
+              {% if hotel.property %}
+              <div class="tab-pane fade " id='property' role="tabpanel" aria-labelledby="property-tab" style="background-color:white">
+                {% for sub in property_sub %}
+                  <div class="row" style="padding-bottom:2rem">
+                    <div class="col-md-7"  >
+                      <strong>{{sub.name}}</strong>
+                      <span>{{sub.summary}}</span>
+                    </div>
+                    <div class="col-md-5" >
+                      {% if sub.image %}
+                        <img src=\{{sub.image}} style=" width:100%;float:right" >
+                      {% endif %}
+                    </div>
+                  </div>
+                  {% endfor %}
+                
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row section-t3">
+              <div class="col-sm-12">
+                <div class="title-box-d">
+                  <h3 class="title-d">Request a quote</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              
+              <div class="col-md-12 col-lg-4">
+                <div class="Resorts-contact">
+                  <form class="form-a" action="/request-quote/">
+                    <div class="row">
+                      <div class="col-md-12 mt-1">
+                        <input name="offer" value={{offer.id}} hidden>
+                        <div class="col-md-12 mt-3">
+                          <button type="submit" class="btn btn-a">Request</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Resorts Single-->
+    {% endif%}
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  {% comment %} <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">ResortsCentral</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                single location for all your hotel needs
+              </p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Phone .</span> contact@example.com
+                </li>
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> +54 356 945234
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">The Company</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <ul class="list-unstyled">
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Site Map</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Legal</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Careers</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">International sites</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Venezuela</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">China</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Hong Kong</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Argentina</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Singapore</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Philippines</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> {% endcomment %}
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="/index">Home</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="/resorts-grid">Hotels</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="/travel-grid">Blogs</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="/contact">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          {% comment %} <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">ResortsCentral</span> All Rights Reserved.
+            </p>
+          </div>
+          <div class="credits">
+            <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=ResortsCentral
+          -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div> {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top  align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+ <!--<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>-->
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+  <!--jquear for dependent dropdown-->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+      console.log("hello")
+      const region_dropdown=document.getElementById("region")
+      const area_dropdown=document.getElementById('area')
+      region_dropdown.addEventListener('change',e=>{
+          selected=e.target.value
+         
+          console.log(selected)
+          $.ajax({
+              type:'GET',
+              url:`/areas/${selected}`,
+              success:function(response){
+                  console.log(response.data)
+                  area_dropdown.innerHTML="<option value=-1>All areas</option>"
+                  const option=document.createElement('option')
+                  option.textContent='all'
+                  option.setAttribute('value',-1)
+                  area_dropdown.appendChild(option)
+                  console.log(response)
+                  const areas_data=response.areas
+                  areas_data.map(item=>{
+                     
+                      option.textContent=item.name
+                      option.setAttribute('value',item.id)
+                      area_dropdown.appendChild(option)
+                  })
+              },
+          }) 
+      })
+    
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+  </script>
+
+</body>
+
+</html>

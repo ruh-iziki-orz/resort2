@@ -1,0 +1,821 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>ResortsCentral Bootstrap Template - Index</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+    <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+    <!-- =======================================================
+  * Template Name: EstateAgency - v4.7.0
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <style>
+    body {
+    background-image: linear-gradient(to right, #7B1FA2, #E91E63)
+}
+
+.section {
+    position: relative;
+    height: 100vh;
+}
+
+.section .section-center {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#booking {
+    font-family: 'Raleway', sans-serif;
+}
+
+.booking-form {
+    position: relative;
+    max-width: 642px;
+    width: 100%;
+    margin: auto;
+    padding: 40px;
+    overflow: hidden;
+    background-image: url('https://i.imgur.com/8z1tx3u.jpg');
+    background-size: cover;
+    border-radius: 5px;
+    z-index: 20;
+}
+
+.booking-form::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.booking-form .form-header {
+    text-align: center;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.booking-form .form-header h1 {
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 42px;
+    margin: 0px;
+    color: #fff;
+}
+
+.booking-form .form-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.booking-form .form-control {
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 60px;
+    padding: 0px 25px;
+    border: none;
+    border-radius: 40px;
+    color: #fff;
+    -webkit-box-shadow: 0px 0px 0px 2px transparent;
+    box-shadow: 0px 0px 0px 2px transparent;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.booking-form .form-control::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.booking-form .form-control:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.booking-form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.booking-form .form-control:focus {
+    -webkit-box-shadow: 0px 0px 0px 2px #ff8846;
+    box-shadow: 0px 0px 0px 2px #ff8846;
+}
+
+.booking-form input[type="date"].form-control {
+    padding-top: 16px;
+}
+
+.booking-form input[type="date"].form-control:invalid {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.booking-form input[type="date"].form-control+.form-label {
+    opacity: 1;
+    top: 10px;
+}
+
+.booking-form select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.booking-form select.form-control:invalid {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.booking-form select.form-control+.select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 32px;
+    line-height: 32px;
+    height: 32px;
+    text-align: center;
+    pointer-events: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+}
+
+.booking-form select.form-control+.select-arrow:after {
+    content: '\279C';
+    display: block;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.booking-form select.form-control option {
+    color: #000;
+}
+
+.booking-form .form-label {
+    position: absolute;
+    top: -10px;
+    left: 25px;
+    opacity: 0;
+    color: #ff8846;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    height: 15px;
+    line-height: 15px;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+}
+
+.booking-form .form-group.input-not-empty .form-control {
+    padding-top: 16px;
+}
+
+.booking-form .form-group.input-not-empty .form-label {
+    opacity: 1;
+    top: 10px;
+}
+
+.booking-form .submit-btn {
+    color: #fff;
+    background-color: #e35e0a;
+    font-weight: 700;
+    height: 60px;
+    padding: 10px 30px;
+    width: 100%;
+    border-radius: 40px;
+    border: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1.3px;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+}
+
+.booking-form .submit-btn:hover,
+.booking-form .submit-btn:focus {
+    opacity: 0.9;
+}
+
+             
+.white-mode {
+    text-decoration: none;
+    padding: 17px 40px;
+    background-color: yellow;
+    border-radius: 3px;
+    color: black;
+    transition: .35s ease-in-out;
+    position: absolute;
+    left: 15px;
+    bottom: 15px
+}
+    </style>
+ 
+</head>
+
+<body>
+
+    <!-- ======= Property Search Section ======= -->
+    <div class="click-closed"></div>
+    <!--/ Form Search Star /-->
+    <div class="box-collapse">
+        <div class="title-box-d">
+            <h3 class="title-d">Search Resorts</h3>
+        </div>
+        <span class="close-box-collapse right-boxed bi bi-x"></span>
+        <div class="box-collapse-wrap form">
+            <form style="float:right" class="form-a" action="\search\",method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <input style="width:50%" name="pg_no" value=0 hidden></input>
+                    <div class="col-md-12 mb-2">
+                        <div class="form-group">
+                            <label class="pb-2" for="Type">Keyword</label>
+                            <input style="width:50%" type="text" name='keyword' class="form-control form-control-lg form-control-a" placeholder="Keyword">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group mt-3">
+                            <label class="pb-2" for="Type">Type</label>
+                            <select class="form-control form-select form-control-a" name="type" id="Type">
+                                <option value='-1'>All Type</option>
+                                {% for type in types%}
+                                <option value={{type.id}}>{{type.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                      <div class="form-group mt-3">
+                          <label class="pb-2" for="region">region</label>
+                          <select class="form-control form-select form-control-a" id="region" name ="region">
+                                <option value="-1">All regions</option>
+                                {% for region in regions%}
+                                <option value={{region.id}}>{{region.name}}</option>
+                                {% endfor %}
+                            </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group mt-3">
+                            <label class="pb-2" for="area">area</label>
+                            <select class="form-control form-select form-control-a" id="area" name='area'>
+                                <option value='-1'>All area</option>
+                                {% for area in areas%}
+                                <option vlaue={{area.id}}>{{area.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group mt-3">
+                            <label class="pb-2" for="price">Min Price</label>
+                            <select class="form-control form-select form-control-a" id="price" name="min">
+                                <option value='-1'>Unlimite</option>
+                                {% for min in minimum %}
+                                <option value={{min.amount}}>{{min.amount}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-b">Search Hotels</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- End Property Search Section -->>
+
+    <!-- ======= Header/Navbar ======= -->
+    <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+        <div class="container">
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+            <a class="navbar-brand text-brand" href="/index">Resorts<span class="color-b">Central</span></a>
+
+            <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="/index">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="/resorts-grid">Hotels</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="/travel-grid">Blogs</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        <i class="bi bi-search"></i>
+      </button>
+
+        </div>
+    </nav>
+    <!--New Template-->
+    
+                                <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet'>
+                                <link href='' rel='stylesheet'>
+                                 <style>body {
+    background-image: linear-gradient(to right, #1fa233, #1ee9e9)
+}
+
+.section {
+    position: relative;
+    height: 100vh;
+}
+
+.section .section-center {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#booking {
+    font-family: 'Raleway', sans-serif;
+}
+
+.booking-form {
+    position: relative;
+    max-width: 642px;
+    width: 100%;
+    margin: auto;
+    padding: 40px;
+    overflow: hidden;
+    background-image: url('https://i.imgur.com/8z1tx3u.jpg');
+    background-size: cover;
+    border-radius: 5px;
+    z-index: 20;
+}
+
+.booking-form::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.booking-form .form-header {
+    text-align: center;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.booking-form .form-header h1 {
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 42px;
+    margin: 0px;
+    color: #fff;
+}
+
+.booking-form .form-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.booking-form .form-control {
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 60px;
+    padding: 0px 25px;
+    border: none;
+    border-radius: 40px;
+    color: #fff;
+    -webkit-box-shadow: 0px 0px 0px 2px transparent;
+    box-shadow: 0px 0px 0px 2px transparent;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.booking-form .form-control::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.booking-form .form-control:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.booking-form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.booking-form .form-control:focus {
+    -webkit-box-shadow: 0px 0px 0px 2px #ff8846;
+    box-shadow: 0px 0px 0px 2px #ff8846;
+}
+
+.booking-form input[type="date"].form-control {
+    padding-top: 16px;
+}
+
+.booking-form input[type="date"].form-control:invalid {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.booking-form input[type="date"].form-control+.form-label {
+    opacity: 1;
+    top: 10px;
+}
+
+.booking-form select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.booking-form select.form-control:invalid {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.booking-form select.form-control+.select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 32px;
+    line-height: 32px;
+    height: 32px;
+    text-align: center;
+    pointer-events: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+}
+
+.booking-form select.form-control+.select-arrow:after {
+    content: '\279C';
+    display: block;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.booking-form select.form-control option {
+    color: #000;
+}
+
+.booking-form .form-label {
+    position: absolute;
+    top: -10px;
+    left: 25px;
+    opacity: 0;
+    color: #ff8846;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    height: 15px;
+    line-height: 15px;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+}
+
+.booking-form .form-group.input-not-empty .form-control {
+    padding-top: 16px;
+}
+
+.booking-form .form-group.input-not-empty .form-label {
+    opacity: 1;
+    top: 10px;
+}
+
+.booking-form .submit-btn {
+    color: #fff;
+    background-color: #e35e0a;
+    font-weight: 700;
+    height: 60px;
+    padding: 10px 30px;
+    width: 100%;
+    border-radius: 40px;
+    border: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1.3px;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+}
+
+.booking-form .submit-btn:hover,
+.booking-form .submit-btn:focus {
+    opacity: 0.9;
+}</style> 
+                                <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js'></script>
+                                <script type='text/javascript'></script>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+<div id="booking" class="section">
+    <div class="section-center">
+        <div class="container">
+            <div class="row">
+                <div class="booking-form">
+                    <div class="form-header">
+                        <h1>Request Quote</h1>
+                        {% if context.message %}
+                        <h4 style="color:green">{{context.message}}</h4>
+                        {% endif %}
+                    </div>
+                    <form action="\quote" method="post">
+                        {% csrf_token %}
+                        {% comment %} <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Country, ZIP, city...">
+                            <span class="form-label">Destination</span>
+                        </div> {% endcomment %}
+                        <input value={{offer.id}} name="offer" hidden>
+                        <div class="row">
+                            <div class="col-md-2"  >
+                                <div class="form-group"  >
+                                    <select class="form-control"  name="title"  required>
+                                        <option value="" selected hidden></option>
+                                        {% for title in titles %}
+                                        <option value={{title.name}}>{{title.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                    <span class="form-label">Title</span>
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="name" placeholder="Name" required>
+                                    <span class="form-label">Name</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="email" name ="email" placeholder="Email " required>
+                                    <span class="form-label">Email</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="tel" name ="tel" placeholder="Contact number" required>
+                                    <span class="form-label">Contact No </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="number" name ="duration" placeholder="Duration" >
+                                    <span class="form-label">Duration</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="date" name ="fromDate" >
+                                    <span class="form-label">From Date</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input class="form-control" type="date" name ="toDate" >
+                                    <span class="form-label">To Date</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" style=" height:100%;">
+                                <div class="form-group">
+                                    <select class="form-control" name="airport" placeholder="select airport" >
+                                        <option value="" selected hidden>Departure airport</option>
+                                        {% for airp in airports%}
+                                        <option value={{airp.id}}>{{airp.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                    <span class="form-label">select airport</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <select class="form-control"  name="travelclass" >
+                                        <option value="" selected hidden>Travel Class</option>
+                                        {% for class in travelClass%}
+                                        <option value={{class.id}}>{{class.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                    <span class="form-label">Travel Class</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <select class="form-control" name="budget" >
+                                        <option value="" selected hidden>Total Budget</option>
+                                        {% for budget in budgets %}
+                                        <option>{{budget.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                    <span class="form-label">Total Budget</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input class="form-control" type="number" name ="adults"  placeholder="Adults" >
+                                    <span class="form-label">Adults</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input class="form-control" type="number" name ="children" placeholder="Children" >
+                                    <span class="form-label">Children</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="comment" placeholder="Additional Commenst">
+                                    <span class="form-label">Comment</span>
+                                </div>
+                            </div>
+                        <div class="form-btn">
+                            <button class="submit-btn">Book Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+{% comment %} <a target="_blank" href="https://gosnippets.com" class="white-mode">MORE</a> {% endcomment %}
+<!--New Template end-->
+
+<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="nav-footer">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href="/index">Home</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="/resorts-grid">Hotels</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="/travel-grid">Blogs</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="socials-a">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="bi bi-facebook" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="bi bi-twitter" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="bi bi-instagram" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="copyright-footer">
+                        <p class="copyright color-text-a">
+                            &copy; Copyright
+                            <span class="color-a">ResortsCentral</span> All Rights Reserved.
+                        </p>
+                    </div>
+                    <div class="credits">
+                        <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
+          -->
+                        {% comment %} Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End  Footer -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <!-- <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script> -->
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <!--jquear for dependent dropdown-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        console.log("hello")
+        let region_dropdown=document.getElementById("region")
+        let area_dropdown=document.getElementById('area')
+        region_dropdown.addEventListener('change',e=>{
+            selected=e.target.value
+           
+            console.log(selected)
+            $.ajax({
+                type:'GET',
+                url:`/areas/${selected}`,
+                success:function(response){
+                    console.log(response.data)
+                    area_dropdown.innerHTML="<option value=-1>All areas</option>"
+                    let option=document.createElement('option')
+                    option.textContent='all'
+                    option.setAttribute('value',-1)
+                    area_dropdown.appendChild(option)
+                    console.log(response)
+                    let areas_data=response.areas
+                    areas_data.map(item=>{
+                       
+                        option.textContent=item.name
+                        option.setAttribute('value',item.id)
+                        area_dropdown.appendChild(option)
+                    })
+                },
+            }) 
+        })
+        
+    </script>
+
+</body>
+
+</html>

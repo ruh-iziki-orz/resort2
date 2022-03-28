@@ -1,0 +1,632 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>ResortCentral Bootstrap Template - About</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: ResortsCentral - v4.7.0
+  * Template URL: https://bootstrapmade.com/real-Resort-agency-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+      <div class="title-box-d">
+          <h3 class="title-d">Search Resorts</h3>
+      </div>
+      <span class="close-box-collapse right-boxed bi bi-x"></span>
+      <div class="box-collapse-wrap form">
+          <form class="form-a" action="\search\",method="POST">
+              {% csrf_token %}
+              <div class="row">
+                  <div class="col-md-12 mb-2">
+                      <div class="form-group">
+                          <label class="pb-2" for="Type">Keyword</label>
+                          <input type="text" name='keyword' class="form-control form-control-lg form-control-a" placeholder="Keyword">
+                      </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                      <div class="form-group mt-3">
+                          <label class="pb-2" for="Type">Type</label>
+                          <select class="form-control form-select form-control-a" name="type" id="Type">
+                              <option value='-1'>All Type</option>
+                              {% for type in types%}
+                              <option value={{type.id}}>{{type.name}}</option>
+                              {% endfor %}
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <div class="form-group mt-3">
+                        <label class="pb-2" for="region">region</label>
+                        <select class="form-control form-select form-control-a" id="region" name ="region">
+                              <option value="-1">All regions</option>
+                              {% for region in regions%}
+                              <option value={{region.id}}>{{region.name}}</option>
+                              {% endfor %}
+                          </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                      <div class="form-group mt-3">
+                          <label class="pb-2" for="area">area</label>
+                          <select class="form-control form-select form-control-a" id="area" name='area'>
+                              <option value='-1'>All area</option>
+                              {% for area in areas%}
+                              <option vlaue={{area.id}}>{{area.name}}</option>
+                              {% endfor %}
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                      <div class="form-group mt-3">
+                          <label class="pb-2" for="price">Min Price</label>
+                          <select class="form-control form-select form-control-a" id="price" name="min">
+                              <option value='-1'>Unlimite</option>
+                              {% for min in minimum %}
+                              <option value={{min.amount}}>{{min.amount}}</option>
+                              {% endfor %}
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <button type="submit" class="btn btn-b">Search Property</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+  <!-- End Property Search Section -->>
+
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="index">Resort<span class="color-b">Central</span></a>
+
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link " href="index">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="about">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="resorts-grid">Resorts</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="travel-grid">Travel</a>
+          </li>
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        <i class="bi bi-search"></i>
+      </button>
+
+    </div>
+  </nav><!-- End Header/Navbar -->
+
+  <main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">We Do Great Design For Creative Folks</h1>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  About
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <!-- ======= About Section ======= -->
+    <section class="section-about">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 position-relative">
+            <div class="about-img-box">
+              <img src="{% static 'assets/img/slide-about-1.jpg' %}" alt="" class="img-fluid">
+            </div>
+            <div class="sinse-box">
+              <h3 class="sinse-title">ResortsCentral
+                <span></span>
+                <br> Sinse 2017
+              </h3>
+              <p>Art & Creative</p>
+            </div>
+          </div>
+          <div class="col-md-12 section-t8 position-relative">
+            <div class="row">
+              <div class="col-md-6 col-lg-5">
+                <img src="{% static 'assets/img/about-2.jpg' %}" alt="" class="img-fluid">
+              </div>
+              <div class="col-lg-2  d-none d-lg-block position-relative">
+                <div class="title-vertical d-flex justify-content-start">
+                  <span>ResortsCentral Exclusive Resorts</span>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-5 section-md-t3">
+                <div class="title-box-d">
+                  <h3 class="title-d">Sed
+                    <span class="color-d">porttitor</span> lectus
+                    <br> nibh.
+                  </h3>
+                </div>
+                <p class="color-text-a">
+                  Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget
+                  consectetur sed, convallis
+                  at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum
+                  ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
+                  neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
+                </p>
+                <p class="color-text-a">
+                  Sed porttitor lectus nibh. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.
+                  Mauris blandit aliquet
+                  elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed,
+                  convallis at tellus.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======Team Section ======= -->
+    <section class="section-agents section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Meet Our Team</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card-box-d">
+              <div class="card-img-d">
+                <img src="{% static 'assets/img/agent-7.jpg' %}" alt="" class="img-d img-fluid">
+              </div>
+              <div class="card-overlay card-overlay-hover">
+                <div class="card-header-d">
+                  <div class="card-title-d align-self-center">
+                    <h3 class="title-d">
+                      <a href="agent-single" class="link-two">Margaret Sotillo
+                        <br> Escala</a>
+                    </h3>
+                  </div>
+                </div>
+                <div class="card-body-d">
+                  <p class="content-d color-text-a">
+                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                  </p>
+                  <div class="info-agents color-a">
+                    <p>
+                      <strong>Phone: </strong> +54 356 945234
+                    </p>
+                    <p>
+                      <strong>Email: </strong> agents@example.com
+                    </p>
+                  </div>
+                </div>
+                <div class="card-footer-d">
+                  <div class="socials-footer d-flex justify-content-center">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-linkedin" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-d">
+              <div class="card-img-d">
+                <img src="{% static 'assets/img/agent-6.jpg' %}" alt="" class="img-d img-fluid">
+              </div>
+              <div class="card-overlay card-overlay-hover">
+                <div class="card-header-d">
+                  <div class="card-title-d align-self-center">
+                    <h3 class="title-d">
+                      <a href="agent-single" class="link-two">Stiven Spilver
+                        <br> Darw</a>
+                    </h3>
+                  </div>
+                </div>
+                <div class="card-body-d">
+                  <p class="content-d color-text-a">
+                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                  </p>
+                  <div class="info-agents color-a">
+                    <p>
+                      <strong>Phone: </strong> +54 356 945234
+                    </p>
+                    <p>
+                      <strong>Email: </strong> agents@example.com
+                    </p>
+                  </div>
+                </div>
+                <div class="card-footer-d">
+                  <div class="socials-footer d-flex justify-content-center">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-linkedin" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-dribbble" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-box-d">
+              <div class="card-img-d">
+                <img src="{% static 'assets/img/agent-5.jpg' %}" alt="" class="img-d img-fluid">
+              </div>
+              <div class="card-overlay card-overlay-hover">
+                <div class="card-header-d">
+                  <div class="card-title-d align-self-center">
+                    <h3 class="title-d">
+                      <a href="agent-single" class="link-two">Emma Toledo
+                        <br> Cascada</a>
+                    </h3>
+                  </div>
+                </div>
+                <div class="card-body-d">
+                  <p class="content-d color-text-a">
+                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                  </p>
+                  <div class="info-agents color-a">
+                    <p>
+                      <strong>Phone: </strong> +54 356 945234
+                    </p>
+                    <p>
+                      <strong>Email: </strong> agents@example.com
+                    </p>
+                  </div>
+                </div>
+                <div class="card-footer-d">
+                  <div class="socials-footer d-flex justify-content-center">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-linkedin" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="link-one">
+                          <i class="bi bi-dribbble" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section-->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">ResortsCentral</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
+                sed aute irure.
+              </p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Phone .</span> contact@example.com
+                </li>
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> +54 356 945234
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">The Company</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <ul class="list-unstyled">
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Site Map</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Legal</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Careers</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">International sites</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Venezuela</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">China</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Hong Kong</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Argentina</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Singapore</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Philippines</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">Home</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">About</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Resorts</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Travel</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">ResortsCentral</span> All Rights Reserved.
+            </p>
+          </div>
+          <div class="credits">
+            <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=ResortsCentral
+          -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+  <!--jquear for dependent dropdown-->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+      console.log("hello")
+      const region_dropdown=document.getElementById("region")
+      const area_dropdown=document.getElementById('area')
+      region_dropdown.addEventListener('change',e=>{
+          selected=e.target.value
+         
+          console.log(selected)
+          $.ajax({
+              type:'GET',
+              url:`/areas/${selected}`,
+              success:function(response){
+                  console.log(response.data)
+                  area_dropdown.innerHTML="<option value=-1>All areas</option>"
+                  const option=document.createElement('option')
+                  option.textContent='all'
+                  option.setAttribute('value',-1)
+                  area_dropdown.appendChild(option)
+                  console.log(response)
+                  const areas_data=response.areas
+                  areas_data.map(item=>{
+                     
+                      option.textContent=item.name
+                      option.setAttribute('value',item.id)
+                      area_dropdown.appendChild(option)
+                  })
+              },
+          }) 
+      })
+      
+  </script>
+</body>
+
+</html>

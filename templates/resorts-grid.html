@@ -1,0 +1,405 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Resort Central Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: ResortCentral - v4.7.0
+  * Template URL: https://bootstrapmade.com/real-Resort-Central-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Resorts Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+      <div class="title-box-d">
+          <h3 class="title-d">Search Resorts</h3>
+      </div>
+      <span class="close-box-collapse right-boxed bi bi-x"></span>
+      <div class="box-collapse-wrap form">
+          <form class="form-a" action="\search\",method="POST">
+              {% csrf_token %}
+              <div class="row">
+                  <div class="col-md-12 mb-2">
+                      <div class="form-group">
+                          <label class="pb-2" for="Type">Keyword</label>
+                          <input type="text" name='keyword' class="form-control form-control-lg form-control-a" placeholder="Keyword">
+                      </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                      <div class="form-group mt-3">
+                          <label class="pb-2" for="Type">Type</label>
+                          <select class="form-control form-select form-control-a" name="type" id="Type">
+                              <option value='-1'>All Type</option>
+                              {% for type in types%}
+                              <option value={{type.id}}>{{type.type}}</option>
+                              {% endfor %}
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <div class="form-group mt-3">
+                        <label class="pb-2" for="region">region</label>
+                        <select class="form-control form-select form-control-a" id="region" name ="region">
+                              <option value="-1">All regions</option>
+                              {% for region in regions%}
+                              <option value={{region.id}}>{{region.name}}</option>
+                              {% endfor %}
+                          </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                      <div class="form-group mt-3">
+                          <label class="pb-2" for="area">area</label>
+                          <select class="form-control form-select form-control-a" id="area" name='area'>
+                              <option value='-1'>All area</option>
+                              {% for area in areas%}
+                              <option vlaue={{area.id}}>{{area.name}}</option>
+                              {% endfor %}
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                      <div class="form-group mt-3">
+                          <label class="pb-2" for="price">Min Price</label>
+                          <select class="form-control form-select form-control-a" id="price" name="min">
+                              <option value='-1'>Unlimited</option>
+                              {% for min in minimum %}
+                              <option value={{min.price}}>{{min.price}}</option>
+                              {% endfor %}
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <button type="submit" class="btn btn-b">Search Hotels</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+  <!-- End Property Search Section -->>
+
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="\index">Resorts<span class="color-b">central</span></a>
+
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link " href="\index">Home</a>
+          </li>
+
+          
+
+          <li class="nav-item">
+            <a class="nav-link active" href="\resorts-grid">Hotels</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="\travel-grid">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="\contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        <i class="bi bi-search"></i>
+      </button>
+
+    </div>
+  </nav><!-- End Header/Navbar -->
+
+  <main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Our Amazing Resorts</h1>
+              <span class="color-text-a">Grid Resorts</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Resorts Grid
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <!-- ======= Resorts Grid ======= -->
+    <section class="Resorts-grid grid">
+      <div class="container">
+        <div class="row">
+          {% for offer in offers %}
+          <div class="col-md-4">
+            <div class="card-box-a ">
+              <div class="img-box-a">
+                <div class="card-box-a card-shadow">
+                  <div class="img-box-a">
+                    <img src=\{{offer.image}} alt="" style="object-fit:cover;
+                    width:355px;
+                    height:250px;" class="img-a img-fluid">
+                  </div>
+                  <div class="card-overlay">
+                    <div class="card-overlay-a-content">
+                      <div class="card-header-a">
+                        <h4 class="card-title-a">
+                          <a href="\resorts-single\?offer={{offer.id}}" name="hotel" value="{{offer.hotel}}" id ="{{offer.hotel}}" >{{offer.hotel.title}}
+                            {% comment %} <br />{{offer.hotel.area}}</a> {% endcomment %}
+                        </h4>
+                      </div>
+                      <div class="card-body-a">
+                        <div class="price-box d-flex">
+                          <span class="price-a">starts from | $ {{offer.from_price}}</span>
+                        </div>
+                        <a href="\resorts-single\?offer={{offer.id}}" name="hotel" value="{{offer.hotel}}" class="link-a">Click here to view
+                          <span class="bi bi-chevron-right"></span>
+                        </a>
+                      </div>
+                      {% if offer.points %}
+                      <div class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                          {% for point in offer.points.all %}
+                          <li>
+                            <h4 class="card-info-title">{{point.name}}</h4>
+                            <span>{{point.desc}}
+                            </span>
+                            <sup>{{point.sub}}</sup>
+                          </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+         {% endfor %}
+              
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-sm-12">
+            {% comment %} <nav class="pagination-a">
+              <ul class="pagination justify-content-end">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">
+                    <span class="bi bi-chevron-left"></span>
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item next">
+                  <a class="page-link" href="#">
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </li>
+              </ul>
+            </nav> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </section><!-- End Resorts Grid Single-->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  {% comment %} <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">ResortCentral</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                single location for all your hotel needs
+              </p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Phone .</span> contact@example.com
+                </li>
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> +54 356 945234
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> {% endcomment %}
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="\index">Home</a>
+              </li>
+              
+              <li class="list-inline-item">
+                <a href="/resorts-grid">Resorts</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="/travel-grid">Blogs</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">ResortCentral</span> All Rights Reserved.
+            </p>
+          </div>
+          <div class="credits">
+            <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=ResortCentral
+          -->
+            {% comment %} Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+  <!--jquear for dependent dropdown-->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+      console.log("hello")
+      const region_dropdown=document.getElementById("region")
+      const area_dropdown=document.getElementById('area')
+      region_dropdown.addEventListener('change',e=>{
+          selected=e.target.value
+         
+          console.log(selected)
+          $.ajax({
+              type:'GET',
+              url:`/areas/${selected}`,
+              success:function(response){
+                  console.log(response.data)
+                  area_dropdown.innerHTML="<option value=-1>All areas</option>"
+                  const option=document.createElement('option')
+                  option.textContent='all'
+                  option.setAttribute('value',-1)
+                  area_dropdown.appendChild(option)
+                  console.log(response)
+                  const areas_data=response.areas
+                  areas_data.map(item=>{
+                     
+                      option.textContent=item.name
+                      option.setAttribute('value',item.id)
+                      area_dropdown.appendChild(option)
+                  })
+              },
+          }) 
+      })
+      
+  </script>
+
+</body>
+
+</html>
