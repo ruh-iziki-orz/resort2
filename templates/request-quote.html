@@ -3,354 +3,190 @@
 <html lang="en">
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>ResortsCentral Bootstrap Template - Index</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+  <title>SahabTravels Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <!-- Favicons -->
-    <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
-    <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: EstateAgency - v4.7.0
-  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  <!-- =======================================================
+  * Template Name: SahabTravels - v4.7.0
+  * Template URL: https://bootstrapmade.com/real-Resorts-central-bootstrap-template/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-    body {
-    background-image: linear-gradient(to right, #7B1FA2, #E91E63)
-}
-
-.section {
-    position: relative;
-    height: 100vh;
-}
-
-.section .section-center {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
-#booking {
-    font-family: 'Raleway', sans-serif;
-}
-
-.booking-form {
-    position: relative;
-    max-width: 642px;
-    width: 100%;
-    margin: auto;
-    padding: 40px;
-    overflow: hidden;
-    background-image: url('https://i.imgur.com/8z1tx3u.jpg');
-    background-size: cover;
-    border-radius: 5px;
-    z-index: 20;
-}
-
-.booking-form::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: -1;
-}
-
-.booking-form .form-header {
-    text-align: center;
-    position: relative;
-    margin-bottom: 30px;
-}
-
-.booking-form .form-header h1 {
-    font-weight: 700;
-    text-transform: capitalize;
-    font-size: 42px;
-    margin: 0px;
-    color: #fff;
-}
-
-.booking-form .form-group {
-    position: relative;
-    margin-bottom: 30px;
-}
-
-.booking-form .form-control {
-    background-color: rgba(255, 255, 255, 0.2);
-    height: 60px;
-    padding: 0px 25px;
-    border: none;
-    border-radius: 40px;
-    color: #fff;
-    -webkit-box-shadow: 0px 0px 0px 2px transparent;
-    box-shadow: 0px 0px 0px 2px transparent;
-    -webkit-transition: 0.2s;
-    transition: 0.2s;
-}
-
-.booking-form .form-control::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.booking-form .form-control:-ms-input-placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.booking-form .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.booking-form .form-control:focus {
-    -webkit-box-shadow: 0px 0px 0px 2px #ff8846;
-    box-shadow: 0px 0px 0px 2px #ff8846;
-}
-
-.booking-form input[type="date"].form-control {
-    padding-top: 16px;
-}
-
-.booking-form input[type="date"].form-control:invalid {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.booking-form input[type="date"].form-control+.form-label {
-    opacity: 1;
-    top: 10px;
-}
-
-.booking-form select.form-control {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-.booking-form select.form-control:invalid {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.booking-form select.form-control+.select-arrow {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    width: 32px;
-    line-height: 32px;
-    height: 32px;
-    text-align: center;
-    pointer-events: none;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 14px;
-}
-
-.booking-form select.form-control+.select-arrow:after {
-    content: '\279C';
-    display: block;
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
-.booking-form select.form-control option {
-    color: #000;
-}
-
-.booking-form .form-label {
-    position: absolute;
-    top: -10px;
-    left: 25px;
-    opacity: 0;
-    color: #ff8846;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.3px;
-    height: 15px;
-    line-height: 15px;
-    -webkit-transition: 0.2s all;
-    transition: 0.2s all;
-}
-
-.booking-form .form-group.input-not-empty .form-control {
-    padding-top: 16px;
-}
-
-.booking-form .form-group.input-not-empty .form-label {
-    opacity: 1;
-    top: 10px;
-}
-
-.booking-form .submit-btn {
-    color: #fff;
-    background-color: #e35e0a;
-    font-weight: 700;
-    height: 60px;
-    padding: 10px 30px;
-    width: 100%;
-    border-radius: 40px;
-    border: none;
-    text-transform: uppercase;
-    font-size: 16px;
-    letter-spacing: 1.3px;
-    -webkit-transition: 0.2s all;
-    transition: 0.2s all;
-}
-
-.booking-form .submit-btn:hover,
-.booking-form .submit-btn:focus {
-    opacity: 0.9;
-}
-
-             
-.white-mode {
-    text-decoration: none;
-    padding: 17px 40px;
-    background-color: yellow;
-    border-radius: 3px;
-    color: black;
-    transition: .35s ease-in-out;
-    position: absolute;
-    left: 15px;
-    bottom: 15px
-}
-    </style>
- 
 </head>
 
 <body>
 
-    <!-- ======= Property Search Section ======= -->
-    <div class="click-closed"></div>
+ 
+  
+  <!-- ======= Resorts Search Section ======= -->
+  <div class="click-closed"></div>
     <!--/ Form Search Star /-->
-    <div class="box-collapse">
-        <div class="title-box-d">
-            <h3 class="title-d">Search Resorts</h3>
-        </div>
-        <span class="close-box-collapse right-boxed bi bi-x"></span>
-        <div class="box-collapse-wrap form">
-            <form style="float:right" class="form-a" action="\search\",method="POST">
-                {% csrf_token %}
-                <div class="row">
-                    <input style="width:50%" name="pg_no" value=0 hidden></input>
-                    <div class="col-md-12 mb-2">
-                        <div class="form-group">
-                            <label class="pb-2" for="Type">Keyword</label>
-                            <input style="width:50%" type="text" name='keyword' class="form-control form-control-lg form-control-a" placeholder="Keyword">
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group mt-3">
-                            <label class="pb-2" for="Type">Type</label>
-                            <select class="form-control form-select form-control-a" name="type" id="Type">
-                                <option value='-1'>All Type</option>
-                                {% for type in types%}
-                                <option value={{type.id}}>{{type.name}}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                      <div class="form-group mt-3">
-                          <label class="pb-2" for="region">region</label>
-                          <select class="form-control form-select form-control-a" id="region" name ="region">
-                                <option value="-1">All regions</option>
-                                {% for region in regions%}
-                                <option value={{region.id}}>{{region.name}}</option>
-                                {% endfor %}
-                            </select>
-                      </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group mt-3">
-                            <label class="pb-2" for="area">area</label>
-                            <select class="form-control form-select form-control-a" id="area" name='area'>
-                                <option value='-1'>All area</option>
-                                {% for area in areas%}
-                                <option vlaue={{area.id}}>{{area.name}}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group mt-3">
-                            <label class="pb-2" for="price">Min Price</label>
-                            <select class="form-control form-select form-control-a" id="price" name="min">
-                                <option value='-1'>Unlimite</option>
-                                {% for min in minimum %}
-                                <option value={{min.amount}}>{{min.amount}}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-b">Search Hotels</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+  <div class="box-collapse" >
+    <div class="title-box-d">
+        <h3 class="title-d">Search Hotels</h3>
     </div>
-    <!-- End Property Search Section -->>
+    <span class="close-box-collapse right-boxed bi bi-x"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a" action="\search\",method="POST">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-12 mb-2">
+              <div class="form-group">
+                <label class="pb-2" for="Type">Keyword</label>
+                <input type="text" name='keyword' class="form-control form-control-lg form-control-a" placeholder="Keyword">
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="Type">Type</label>
+                <select class="form-control form-select form-control-a" name="type" id="Type">
+                  <option value='-1'>All Type</option>
+                  {% for type in types%}
+                  <option value={{type.id}}>{{type.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="country">Country</label>
+                <select class="form-control form-select form-control-a" id="country" name ="country">
+                  <option value="-1">All Countries</option>
+                  {% for country in countries%}
+                  <option value={{country.id}}>{{country.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            {% comment %} <div class="col-md-6 mb-2" style="padding-left: 18rem; width:150%" > {% endcomment %}
+            <div class="col-md-6 mb-2" style="padding-top:1rem">
+              <div class="form-group mt-3">
+                <button type="submit" class="btn btn-b">Search Hotels</button>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="region">Region</label>
+                <select class="form-control form-select form-control-a" id="region" name='region'>
+                  <option value='-1'>All Regions</option>
+                  {% for region in regions%}
+                  <option vlaue={{region.id}}>{{region.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+           <div class="col-md-6 mb-2" hidden>
+              <div class="form-group mt-3">
+                <label class="pb-2" for="price">Min Price</label>
+                <select class="form-control form-select form-control-a" id="price" name="min">
+                  <option value='-1' default>Unlimite</option>
+                  {% for min in minimum %}
+                  <option value={{min.amount}}>{{min.amount}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div> 
+            {% comment %} <div class="col-md-12">
+              <button type="submit" class="btn btn-b">Search Hotels</button>
+            </div> {% endcomment %}
+          </div>
+      </form>
+    </div>
+  </div>
 
-    <!-- ======= Header/Navbar ======= -->
-    <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-        <div class="container">
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- End Resort Search Section -->
+
+
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span></span>
         <span></span>
         <span></span>
       </button>
-            <a class="navbar-brand text-brand" href="/index">Resorts<span class="color-b">Central</span></a>
+      
+      
+      <a class="navbar-brand text-brand" href="/index"><img src="{% static 'assets/img/sahab_logo.png' %}" height=55px width=120px></a>
 
-            <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-                <ul class="navbar-nav">
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
 
-                    <li class="nav-item">
-                        <a class="nav-link " href="/index">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="/resorts-grid">Hotels</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="/travel-grid">Blogs</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-
-            <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+          <li class="nav-item">
+            <a class="nav-link " href="/index">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/resorts-grid">Hotels</a>
+          </li>
+          
+         
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/travel-grid">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/contact">Contact</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">  Destination  </a>
+              <ul class="dropdown-menu" style="list-style-type: none;">
+                {% for country in countries %}
+                <li><a class="dropdown-item" href="#"> {{country.name}} &raquo </a>
+                    <ul class="submenu sub-dropdown-menu" style="list-style-type: none;" >
+                      {% for region in regions %}
+                        {% if region.country_id == country.id%}
+                        <li><a class="dropdown-item" href="/hotels-regions/?region={{region.id}}">{{region.name}}</a></li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+              </ul>
+          </li>
+          <li>
+            <div id="google_translate_element"></div>
+   <script type="text/javascript"> 
+     function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+  </script>
+  
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  </li>
+          {% comment %} <li class="nav-item">
+            <button type="button" class="btn btn-b-n loc-navbar-toggle-box loc-navbar-toggle-box-collapse" data-bs-toggle="loc-collapse" data-bs-target="#loc-navbarTogglerDemo01">
+              locations
+            </button>
+          </li> {% endcomment %}
+        </ul>
+      </div>
+      
+      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
         <i class="bi bi-search"></i>
       </button>
 
-        </div>
-    </nav>
+    </div>
+  </nav><!-- End Header/Navbar -->
     <!--New Template-->
     
                                 <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet'>
@@ -771,51 +607,77 @@
         </div>
     </footer>
     <!-- End  Footer -->
-
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+  
     <!-- Vendor JS Files -->
     <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-    <!-- <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script> -->
-
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  
     <!-- Template Main JS File -->
     <script src="{% static 'assets/js/main.js' %}"></script>
+  
     <!--jquear for dependent dropdown-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
+      $(document).ready(function() {
+        // jQuery code
+      
+        //////////////////////// Prevent closing from click inside dropdown
+          $(document).on('click', '.dest-dropdown-menu', function (e) {
+            e.stopPropagation();
+          });
+      
+          // make it as accordion for smaller screens
+          if ($(window).width() < 992) {
+            $('.dest-dropdown-menu a').click(function(e){
+              e.preventDefault();
+                if($(this).next('.dest-submenu').length){
+                  $(this).next('.dest-submenu').toggle();
+                }
+                $('.dest-dropdown').on('hide.bs.dest-dropdown', function () {
+               $(this).find('.dest-submenu').hide();
+            })
+            });
+        }
+        
+      });
+    
+  
+  
+      
         console.log("hello")
-        let region_dropdown=document.getElementById("region")
-        let area_dropdown=document.getElementById('area')
-        region_dropdown.addEventListener('change',e=>{
+        const country_dropdown=document.getElementById("country")
+        const region_dropdown=document.getElementById('region')
+        country_dropdown.addEventListener('change',e=>{
             selected=e.target.value
            
             console.log(selected)
             $.ajax({
                 type:'GET',
-                url:`/areas/${selected}`,
-                success:function(response){
+                url:`/regions/${selected}`,
+                success:function(response)
+                {
                     console.log(response.data)
-                    area_dropdown.innerHTML="<option value=-1>All areas</option>"
-                    let option=document.createElement('option')
+                    region_dropdown.innerHTML="<option value=-1>All areas</option>"
+                    const option=document.createElement('option')
                     option.textContent='all'
                     option.setAttribute('value',-1)
-                    area_dropdown.appendChild(option)
+                    region_dropdown.appendChild(option)
                     console.log(response)
-                    let areas_data=response.areas
-                    areas_data.map(item=>{
+                    const region_data=response.regions
+                    region_data.map(item=>{
                        
                         option.textContent=item.name
                         option.setAttribute('value',item.id)
-                        area_dropdown.appendChild(option)
+                        region_dropdown.appendChild(option)
                     })
                 },
             }) 
         })
         
     </script>
-
-</body>
-
-</html>
+  </body>
+  
+  </html>

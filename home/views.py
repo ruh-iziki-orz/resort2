@@ -6,16 +6,17 @@ from django.http import JsonResponse
 from django.db.models import Q
 # Create your views here.
 def index(request):
-    regions=Regions.objects.all
+    regions=Regions.objects.all#filter(countries=1).values_list()
     types=Hotel_Types.objects.all
     header=Offers.objects.filter(main_screen=True)
     offers=Offers.objects.filter(main_screen=False)
     minimum=Min_Pricing.objects.all
-    
+    countries=Countries.objects.all
     travel=travels.objects.all
     areas=Areas.objects.all
+    print(regions)
     print(offers)
-    return render(request,'index.html',{"header":header,"offers":offers,"travels":travel,"areas":areas,"regions":regions,"types":types,"minimum":minimum})
+    return render(request,'index.html',{"header":header,"countries":countries,"offers":offers,"travels":travel,"areas":areas,"regions":regions,"types":types,"minimum":minimum})
 def resort(request):
     #print(args,kwargs)
     print(request.GET['offer'])
@@ -34,63 +35,69 @@ def resort(request):
     regions=Regions.objects.all()
     types=Hotel_Types.objects.all()
     areas=Areas.objects.all()
+    countries=Countries.objects.all
     situationsal_price=Situationsal_Pricing.objects.filter(offer_id=offer_id)
-    return render(request,'resorts-single.html',{"hotel":hotel,"photos":photo,"offer":offers,"situational_price":situationsal_price,"accomidation_sub":accomidation_sub,'dining_sub':dining_sub,"areas":areas,"property_sub":property_sub,"regions":regions,"types":types,"minimum":minimum})
+    return render(request,'resorts-single.html',{"hotel":hotel,"photos":photo,"countries":countries,"offer":offers,"situational_price":situationsal_price,"accomidation_sub":accomidation_sub,'dining_sub':dining_sub,"areas":areas,"property_sub":property_sub,"regions":regions,"types":types,"minimum":minimum})
 def about(request):
     minimum=Min_Pricing.objects.all()
     regions=Regions.objects.all()
     types=Hotel_Types.objects.all()
     areas=Areas.objects.all()
-    return render(request,'about.html',{"areas":areas,"regions":regions,"types":types,"minimum":minimum})
+    countries=Countries.objects.all
+    return render(request,'about.html',{"areas":areas,"regions":regions,"countries":countries,"types":types,"minimum":minimum})
 def grid(request):
     regions=Regions.objects.all
     types=Hotel_Types.objects.all
     minimum=Min_Pricing.objects.all
+    countries=Countries.objects.all
     areas=Areas.objects.all
     offers=Offers.objects.all
-    return render(request,'resorts-grid.html',{"offers":offers,"regions":regions,"types":types,"minimum":minimum,"areas":areas})
+    return render(request,'resorts-grid.html',{"offers":offers,"regions":regions,"countries":countries,"types":types,"minimum":minimum,"areas":areas})
 def travel_grid(request):
     regions=Regions.objects.all
     types=Hotel_Types.objects.all
     minimum=Min_Pricing.objects.all
+    countries=Countries.objects.all
     areas=Areas.objects.all
     travel=travels.objects.all
-    return render(request,'travel-grid.html',{"travels":travel,"regions":regions,"types":types,"minimum":minimum,'areas':areas})
+    return render(request,'travel-grid.html',{"travels":travel,"regions":regions,"countries":countries,"types":types,"minimum":minimum,'areas':areas})
 def travel_single(request):
     id=int(request.GET["travel"])
     travel=travels.objects.get(id=id)
     regions=Regions.objects.all
     types=Hotel_Types.objects.all
     minimum=Min_Pricing.objects.all
+    countries=Countries.objects.all
     areas=Areas.objects.all
-    return render(request,'travel-single.html',{"travel":travel,"regions":regions,"types":types,"minimum":minimum,'areas':areas})
+    return render(request,'travel-single.html',{"travel":travel,"regions":regions,"countries":countries,"types":types,"minimum":minimum,'areas':areas})
 def contact(request):
     regions=Regions.objects.all
     types=Hotel_Types.objects.all
     minimum=Min_Pricing.objects.all
+    countries=Countries.objects.all
     areas=Areas.objects.all
-    return render(request,"contact.html",{"regions":regions,"types":types,"minimum":minimum,'areas':areas})
+    return render(request,"contact.html",{"regions":regions,"types":types,"minimum":minimum,"countries":countries,'areas':areas})
 def search(request):
     print(request.method)
     keyword=request.GET['keyword']
     type=int(request.GET["type"])
     regions=int(request.GET["region"])
-    areas=int(request.GET["area"])
+    country=int(request.GET["country"])
     minimum=int(request.GET['min'])
     #pg_no=int(request.GET['pg_no'])
-    print(keyword,type,regions,minimum,areas)
+    print(keyword,type,regions,minimum,country)
     hotel_ids=Hotel_Infos.objects.all().values_list("id", flat=True)
-    if type!=-1:
-        hotel_ids=Hotel_Infos.objects.filter(type_id=type).values_list("id",flat=True)
-    print(hotel_ids)
-    if areas==-1:
-        if regions!=-1:
-            areas=Areas.objects.filter(region_id=regions).values_list("id",flat=True)
+    # if type!=-1:
+    #     hotel_ids=Hotel_Infos.objects.filter(type_id=type).values_list("id",flat=True)
+    # print(hotel_ids)
+    if regions==-1:
+        if country!=-1:
+            regions=Regions.objects.filter(country_id=country).values_list("id",flat=True)
+            areas=Areas.objects.filter(region_id__in=regions).values_list("id",flat=True)
             hotel_ids=Hotel_Infos.objects.filter( area_id__in=areas,id__in=hotel_ids).values_list("id",flat=True)
     else:
-        areas=Areas.objects.filter(id=areas).values_list("id",flat=True)
+        areas=Areas.objects.filter(region_id=regions).values_list("id",flat=True)
         hotel_ids=Hotel_Infos.objects.filter( area_id__in=areas,id__in=hotel_ids).values_list("id",flat=True)
-    print(areas)
     if len(keyword)>0:
         qs=Q(title__icontains=keyword)
         hotel_ids=Hotel_Infos.objects.filter(qs,id__in=hotel_ids).values_list("id",flat=True)
@@ -98,11 +105,25 @@ def search(request):
         offers=Offers.objects.filter( hotel__id__in=hotel_ids)
     else:
         offers=Offers.objects.filter(from_price__lte=minimum, hotel_id__in=hotel_ids)
+    
     regions=Regions.objects.all
     types=Hotel_Types.objects.all
     minimum=Min_Pricing.objects.all
     areas=Areas.objects.all
-    return render(request,'resorts-grid.html',{"offers":offers,"regions":regions,"areas":areas,"types":types,"minimum":minimum})
+    countries=Countries.objects.all
+    return render(request,'resorts-grid.html',{"offers":offers,"regions":regions,"countries":countries,"areas":areas,"types":types,"minimum":minimum})
+
+def hotels_regions(request):
+    print(request.GET['region'])
+    region_id=int(request.GET['region'])
+    hotel_ids=Hotel_Infos.objects.filter( area__region_id=region_id).values_list("id",flat=True)
+    offers=Offers.objects.filter( hotel__id__in=hotel_ids)
+    countries=Countries.objects.all
+    types=Hotel_Types.objects.all
+    minimum=Min_Pricing.objects.all
+    regions=Regions.objects.all
+    return render(request,'resorts-grid.html',{"offers":offers,"regions":regions,"countries":countries,"types":types,"minimum":minimum})
+
 
 def quote(request):
     print(request)
@@ -112,6 +133,7 @@ def quote(request):
     regions=Regions.objects.all
     types=Hotel_Types.objects.all
     minimum=Min_Pricing.objects.all
+    countries=Countries.objects.all
     areas=Areas.objects.all
     titles=Titles.objects.all
     airports=Airports.objects.all
@@ -144,19 +166,19 @@ def quote(request):
     return render(request,"request-quote.html",{"context":context,"travelClass":travelClass,"airports":airports,"titles":titles,"offer":offers,"regions":regions,"types":types,"minimum":minimum,'areas':areas,"budgets":budgets})
     # return render(request, "contact.html", context=context)
     #return render(request,"contact.html",context=context)
-def areas_list(request,*args, **kwargs):
-    region_id=int(kwargs.get('selected'))
-    print(region_id)
-    if region_id==-1:
-        areas=list(Areas.objects.all().values())
-        return JsonResponse({"areas":areas})
-    areas=list(Areas.objects.filter(region_id=region_id).values())
-    print(areas)
-    return JsonResponse({"areas":areas})
+def regions_list(request,*args, **kwargs):
+    country_id=int(kwargs.get('selected'))
+    print(country_id)
+    if country_id==-1:
+        regions=list(Regions.objects.all().values())
+        return JsonResponse({"regions":regions})
+    regions=list(Regions.objects.filter(country_id=country_id).values())
+    return JsonResponse({"regions":regions})
     areas_list=area.objects.filter()
 def request_quote(request):
     offer_id=request.GET['offer']
     offers=Offers.objects.get(id=offer_id)
+    countries=Countries.objects.all
     regions=Regions.objects.all
     types=Hotel_Types.objects.all
     minimum=Min_Pricing.objects.all
@@ -166,12 +188,13 @@ def request_quote(request):
     travelClass=Travel_Classes.objects.all
     budgets=Budgets.objects.all
     context={"message":""}
-    return render(request,"request-quote.html",{"context":context,"travelClass":travelClass,"airports":airports,"titles":titles,"offer":offers,"regions":regions,"types":types,"minimum":minimum,'areas':areas,"budgets":budgets})
+    return render(request,"request-quote.html",{"context":context,"countries":countries,"travelClass":travelClass,"airports":airports,"titles":titles,"offer":offers,"regions":regions,"types":types,"minimum":minimum,'areas':areas,"budgets":budgets})
 
 
 def contact_form(request):
     print(request.POST)
     context={"message":"something went wrong"}
+    countries=Countries.objects.all
     regions=Regions.objects.all
     types=Hotel_Types.objects.all
     minimum=Min_Pricing.objects.all
@@ -185,5 +208,5 @@ def contact_form(request):
         con_form.save()
         context={"message":"we will get back to you soon"}
        
-    return render(request,"contact.html",{"context":context,"regions":regions,"types":types,"minimum":minimum,'areas':areas})
+    return render(request,"contact.html",{"context":context,"countries":countries,"regions":regions,"types":types,"minimum":minimum,'areas':areas})
 

@@ -11,9 +11,10 @@ urlpatterns = [
     path('index',views.index),
     path('',views.index),
     path('contact',views.contact),
+    path('search/',views.search),
     path('contact-form',views.contact_form),
     path("request-quote/",views.request_quote),
-    path('search/',views.search),
-    path('areas/<int:selected>',views.areas_list),
+    path('hotels-regions/',views.hotels_regions),
+    path('regions/<int:selected>',views.regions_list),
     path('quote',views.quote),
 ]

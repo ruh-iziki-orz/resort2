@@ -4,11 +4,12 @@
  * Author: BootstrapMade.com
  * License: https://bootstrapmade.com/license/
  */
-
  
 
 
 
+
+ 
 
 
  var acc = document.getElementsByClassName("accordion");
@@ -249,3 +250,4 @@
      });
  
  })()
+

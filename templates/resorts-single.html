@@ -3,11 +3,10 @@
 <html lang="en">
 
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>ResortsCentral Bootstrap Template - Index</title>
+  <title>SahabTravels Bootstrap Template - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -28,84 +27,95 @@
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
   <!-- =======================================================
-  * Template Name: ResortsCentral - v4.7.0
-  * Template URL: https://bootstrapmade.com/real-Resorts-Central-bootstrap-template/
+  * Template Name: SahabTravels - v4.7.0
+  * Template URL: https://bootstrapmade.com/real-Resorts-central-bootstrap-template/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
 
 <body>
-
+  
+ 
+  
   <!-- ======= Resorts Search Section ======= -->
   <div class="click-closed"></div>
-  <!--/ Form Search Star /-->
-  <div class="box-collapse">
+    <!--/ Form Search Star /-->
+  <div class="box-collapse" >
     <div class="title-box-d">
-      <h3 class="title-d">Search Resorts</h3>
+        <h3 class="title-d">Search Hotels</h3>
     </div>
     <span class="close-box-collapse right-boxed bi bi-x"></span>
     <div class="box-collapse-wrap form">
       <form class="form-a" action="\search\",method="POST">
-        {% csrf_token %}
-        <div class="row">
-          <div class="col-md-12 mb-2">
-            <div class="form-group">
-              <label class="pb-2" for="Type">Keyword</label>
-              <input type="text" name='keyword' class="form-control form-control-lg form-control-a" placeholder="Keyword">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-12 mb-2">
+              <div class="form-group">
+                <label class="pb-2" for="Type">Keyword</label>
+                <input type="text" name='keyword' class="form-control form-control-lg form-control-a" placeholder="Keyword">
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="Type">Type</label>
-              <select class="form-control form-select form-control-a" name="type" id="Type">
-                <option value='-1'>All Type</option>
-                {% for type in types%}
-                <option value={{type.id}}>{{type.name}}</option>
-                {% endfor %}
-              </select>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="Type">Type</label>
+                <select class="form-control form-select form-control-a" name="type" id="Type">
+                  <option value='-1'>All Type</option>
+                  {% for type in types%}
+                  <option value={{type.id}}>{{type.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="region">region</label>
-              <select class="form-control form-select form-control-a" id="region" name ="region">
-                <option value="-1">All regions</option>
-                {% for region in regions%}
-                <option value={{region.id}}>{{region.name}}</option>
-                {% endfor %}
-              </select>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="country">Country</label>
+                <select class="form-control form-select form-control-a" id="country" name ="country">
+                  <option value="-1">All Countries</option>
+                  {% for country in countries%}
+                  <option value={{country.id}}>{{country.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="area">area</label>
-              <select class="form-control form-select form-control-a" id="area" name='area'>
-                <option value='-1'>All area</option>
-                {% for area in areas%}
-                <option vlaue={{area.id}}>{{area.name}}</option>
-                {% endfor %}
-              </select>
+            {% comment %} <div class="col-md-6 mb-2" style="padding-left: 18rem; width:150%" > {% endcomment %}
+            <div class="col-md-6 mb-2" style="padding-top:1rem">
+              <div class="form-group mt-3">
+                <button type="submit" class="btn btn-b">Search Hotels</button>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="price">Min Price</label>
-              <select class="form-control form-select form-control-a" id="price" name="min">
-                <option value='-1'>Unlimite</option>
-                {% for min in minimum %}
-                <option value={{min.amount}}>{{min.amount}}</option>
-                {% endfor %}
-              </select>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="region">Region</label>
+                <select class="form-control form-select form-control-a" id="region" name='region'>
+                  <option value='-1'>All Regions</option>
+                  {% for region in regions%}
+                  <option vlaue={{region.id}}>{{region.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
             </div>
+           <div class="col-md-6 mb-2" hidden>
+              <div class="form-group mt-3">
+                <label class="pb-2" for="price">Min Price</label>
+                <select class="form-control form-select form-control-a" id="price" name="min">
+                  <option value='-1' default>Unlimite</option>
+                  {% for min in minimum %}
+                  <option value={{min.amount}}>{{min.amount}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div> 
+            {% comment %} <div class="col-md-12">
+              <button type="submit" class="btn btn-b">Search Hotels</button>
+            </div> {% endcomment %}
           </div>
-          <div class="col-md-12">
-            <button type="submit" class="btn btn-b">Search Hotels</button>
-          </div>
-        </div>
       </form>
     </div>
-  </div><!-- End Resorts Search Section -->>
+  </div>
+
+    <!-- End Resort Search Section -->
+
 
   <!-- ======= Header/Navbar ======= -->
   <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
@@ -115,7 +125,9 @@
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="/index">Resorts<span class="color-b">Central</span></a>
+      
+      
+      <a class="navbar-brand text-brand" href="/index"><img src="{% static 'assets/img/sahab_logo.png' %}" height=55px width=120px></a>
 
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
@@ -123,20 +135,53 @@
           <li class="nav-item">
             <a class="nav-link " href="/index">Home</a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link " href="/resorts-grid">Hotels</a>
           </li>
-
+          
+         
+          </li>
           <li class="nav-item">
             <a class="nav-link " href="/travel-grid">Blogs</a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="/contact">Contact</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">  Destination  </a>
+              <ul class="dropdown-menu" style="list-style-type: none;">
+                {% for country in countries %}
+                <li><a class="dropdown-item" href="#"> {{country.name}} &raquo </a>
+                    <ul class="submenu sub-dropdown-menu" style="list-style-type: none;" >
+                      {% for region in regions %}
+                        {% if region.country_id == country.id%}
+                        <li><a class="dropdown-item" href="/hotels-regions/?region={{region.id}}">{{region.name}}</a></li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+              </ul>
+          </li>
+          <li>
+            <div id="google_translate_element"></div>
+   <script type="text/javascript"> 
+     function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+  </script>
+  
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  </li>
+ 
+          {% comment %} <li class="nav-item">
+            <button type="button" class="btn btn-b-n loc-navbar-toggle-box loc-navbar-toggle-box-collapse" data-bs-toggle="loc-collapse" data-bs-target="#loc-navbarTogglerDemo01">
+              locations
+            </button>
+          </li> {% endcomment %}
         </ul>
       </div>
-
+      
       <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
         <i class="bi bi-search"></i>
       </button>
@@ -208,7 +253,7 @@
                       <div class="card border-success mb-3" style="max-width: 18rem;">
                         <div class="card-header">Just From</div>
                         <div class="card-body text-success">
-                          <h5 class="card-title">RS  {{offer.from_price}}</h5>
+                          <h5 class="card-title">{{offer.currency}}  {{offer.from_price}}</h5>
                           {% if offer.comment %}
                           <p class="card-text">{{offer.comment}}</p>
                           {% else %}
@@ -495,7 +540,7 @@
         <div class="col-sm-12 col-md-4">
           <div class="widget-a">
             <div class="w-header-a">
-              <h3 class="w-title-a text-brand">ResortsCentral</h3>
+              <h3 class="w-title-a text-brand">SahabTravels</h3>
             </div>
             <div class="w-body-a">
               <p class="w-text-a color-text-a">
@@ -624,7 +669,7 @@
           {% comment %} <div class="copyright-footer">
             <p class="copyright color-text-a">
               &copy; Copyright
-              <span class="color-a">ResortsCentral</span> All Rights Reserved.
+              <span class="color-a">SahabTravels</span> All Rights Reserved.
             </p>
           </div>
           <div class="credits">
@@ -632,7 +677,7 @@
             All the links in the footer should remain intact.
             You can delete the links only if you purchased the pro version.
             Licensing information: https://bootstrapmade.com/license/
-            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=ResortsCentral
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=SahabTravels
           -->
             Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
           </div> {% endcomment %}
@@ -640,14 +685,13 @@
       </div>
     </div>
   </footer><!-- End  Footer -->
-
   <div id="preloader"></div>
-  <a href="#" class="back-to-top  align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
- <!--<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>-->
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
 
   <!-- Template Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
@@ -655,56 +699,63 @@
   <!--jquear for dependent dropdown-->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
+    $(document).ready(function() {
+      // jQuery code
+    
+      //////////////////////// Prevent closing from click inside dropdown
+        $(document).on('click', '.dest-dropdown-menu', function (e) {
+          e.stopPropagation();
+        });
+    
+        // make it as accordion for smaller screens
+        if ($(window).width() < 992) {
+          $('.dest-dropdown-menu a').click(function(e){
+            e.preventDefault();
+              if($(this).next('.dest-submenu').length){
+                $(this).next('.dest-submenu').toggle();
+              }
+              $('.dest-dropdown').on('hide.bs.dest-dropdown', function () {
+             $(this).find('.dest-submenu').hide();
+          })
+          });
+      }
+      
+    });
+  
+
+
+    
       console.log("hello")
-      const region_dropdown=document.getElementById("region")
-      const area_dropdown=document.getElementById('area')
-      region_dropdown.addEventListener('change',e=>{
+      const country_dropdown=document.getElementById("country")
+      const region_dropdown=document.getElementById('region')
+      country_dropdown.addEventListener('change',e=>{
           selected=e.target.value
          
           console.log(selected)
           $.ajax({
               type:'GET',
-              url:`/areas/${selected}`,
-              success:function(response){
+              url:`/regions/${selected}`,
+              success:function(response)
+              {
                   console.log(response.data)
-                  area_dropdown.innerHTML="<option value=-1>All areas</option>"
+                  region_dropdown.innerHTML="<option value=-1>All areas</option>"
                   const option=document.createElement('option')
                   option.textContent='all'
                   option.setAttribute('value',-1)
-                  area_dropdown.appendChild(option)
+                  region_dropdown.appendChild(option)
                   console.log(response)
-                  const areas_data=response.areas
-                  areas_data.map(item=>{
+                  const region_data=response.regions
+                  region_data.map(item=>{
                      
                       option.textContent=item.name
                       option.setAttribute('value',item.id)
-                      area_dropdown.appendChild(option)
+                      region_dropdown.appendChild(option)
                   })
               },
           }) 
       })
-    
-        /* When the user clicks on the button, 
-        toggle between hiding and showing the dropdown content */
-        function myFunction() {
-          document.getElementById("myDropdown").classList.toggle("show");
-        }
-        
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-          if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-              var openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-              }
-            }
-          }
-        }
+      
   </script>
-
 </body>
 
 </html>

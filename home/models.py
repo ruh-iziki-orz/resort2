@@ -1,14 +1,20 @@
 from distutils.command.upload import upload
 import email
 from email import message
+from locale import currency
 from re import VERBOSE
 from sre_parse import Verbose
 from tabnanny import verbose
 from django.db import models
 #from phone_field import PhoneField
 # Create your models here.
+class Countries(models.Model):
+    name=models.CharField(verbose_name="Country name",max_length=50)
+    def __str__(self) -> str:
+        return self.name
 class Regions(models.Model):
     name=models.CharField(verbose_name="region name", max_length=50)
+    country=models.ForeignKey(Countries,verbose_name="country",on_delete=models.CASCADE,blank=True,null=True,parent_link=True)
     def __str__(self):
         return str(self.name)
 class Areas(models.Model):
@@ -139,6 +145,7 @@ class Offers(models.Model):
     airport=models.ForeignKey(Airports, on_delete=models.CASCADE)
     validity=models.TextField(blank=True)
     image=models.ImageField(upload_to="offer_image/")
+    currency=models.CharField(max_length=50,default="$")
     from_price=models.IntegerField(null=True,blank=True)
     comment=models.TextField(null=True,blank=True)
     #from_room_type=models.CharField(max_length=15,choices=Room_Type.choices,null=True,blank=True)
